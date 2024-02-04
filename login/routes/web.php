@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ViewController;
 
 /*
@@ -30,13 +29,6 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [ViewController::class, 'dashboard'])->name('dashboard');
 });
-
-Route::get('/admin/user/{id}', [HomeController::class, 'getUserDetails']);
-Route::get('/admin/user/{id}/edit', [HomeController::class, 'editUserDetails']);
-
-Route::post('/deactivate-user/{id}', [HomeController::class, 'deactivateUser'])->name('deactivate-user');
-Route::post('/activate-user/{id}', [HomeController::class, 'activateUser'])->name('activate-user');
-
 
 Route::post('/get-user-details', [AjaxController::class, 'getAllUsers'])->name('get-user-details');
 Route::post('/user-status-changer', [AjaxController::class, 'statusChanger'])->name('user-status-changer');
